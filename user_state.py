@@ -25,3 +25,39 @@ user_state = {
     # "crash_risico": 0.0,        # 0.0-1.0, berekend door simulator (V2)
     # "stress_niveau": "laag",    # (V2)
 }
+
+# ─────────────────────────────────────────
+# 2. JOUW EERSTE FUNCTIE
+# ─────────────────────────────────────────
+
+def bereken_energie_advies(state):
+    """
+    Geeft een eenvoudig advies op basis van de huidige gebruikersstatus.
+    'state' is onze user_state dictionary — we geven hem mee aan de functie.
+    """
+
+    energie = state["energie_niveau"]
+    slaap   = state["slaap_uren"]
+
+    if energie >= 70 and slaap >= 7:
+        advies = "Goede dag om actief te zijn. Bewaak je energieniveau elk uur."
+
+    elif energie >= 40 and slaap >= 5:
+        advies = "Matige energie. Plan een rustmoment in de middag."
+
+    else:
+        advies = "Lage energie of weinig slaap. Prioriteit: herstel boven activiteit."
+
+    return advies
+    
+# ─────────────────────────────────────────
+# TEST DIRECT (optioneel - verwijder later)
+# ─────────────────────────────────────────
+
+    if __name__=="__":
+        # Test de functie met de huidige staat
+        print(=== Health Simulator Test ===")
+        print(f"Energie:{user_state['energie_niveau']}")
+        print(f"Slaap:{user_state['slaap_uren']}uur")
+        print(f"\nAdvies:{bereken_energie_advies(user_state)}")
+    
